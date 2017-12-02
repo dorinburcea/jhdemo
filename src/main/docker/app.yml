@@ -1,0 +1,14 @@
+version: '2'
+services:
+    jhdemo-app:
+        image: jhdemo
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mariadb://jhdemo-mariadb:3306/jhdemo
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    jhdemo-mariadb:
+        extends:
+            file: mariadb.yml
+            service: jhdemo-mariadb
